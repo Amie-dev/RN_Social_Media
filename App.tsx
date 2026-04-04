@@ -1,34 +1,36 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-
-import { StatusBar, StyleSheet,  View } from 'react-native';
+import { StatusBar, StyleSheet, View } from 'react-native';
 import {
   SafeAreaProvider,
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
+import { AppContextProvider, useAppContext } from './src/context/AppContext';
+import Main from './src/Main';
+import { COLORS } from './src/constants/Colors';
 
 function App() {
-  
-
   return (
     <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      
+      <AppContextProvider>
+        <AppContent />
+      </AppContextProvider>
     </SafeAreaProvider>
   );
 }
 
 function AppContent() {
   const safeAreaInsets = useSafeAreaInsets();
+  const { isDarkMode } = useAppContext(); // ✅ now it's inside provider
+  const theme = isDarkMode ? COLORS.dark : COLORS.light;
 
   return (
-    <View style={styles.container}>
-      
+    <View
+      style={[styles.container, { backgroundColor: `${theme.background}` }]}
+    >
+      <StatusBar
+        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+        backgroundColor={isDarkMode ? `${theme.background}` : '#fff'}
+      />
+      <Main />
     </View>
   );
 }
