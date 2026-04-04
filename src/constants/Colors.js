@@ -7,7 +7,7 @@ export const COLORS = {
 
     // Text
     text: "#111827",
-    textSecondary: "#4B5563", // fixed (more realistic)
+    textSecondary: "#4B5563",
     textMuted: "#9CA3AF",
 
     // Brand
@@ -34,6 +34,13 @@ export const COLORS = {
     inputBorder: "#D1D5DB",
     placeholder: "#9CA3AF",
 
+    // Header / Footer 🔥
+    headerBackground: "#FFFFFF",
+    headerText: "#111827",
+    footerBackground: "#FFFFFF",
+    footerIcon: "#6B7280",
+    footerActive: "#d8d100",
+
     // Misc
     overlay: "rgba(0,0,0,0.3)",
     shadow: "#000000",
@@ -47,7 +54,7 @@ export const COLORS = {
 
     // Text
     text: "#F9FAFB",
-    textSecondary: "#D1D5DB", // fixed (better contrast)
+    textSecondary: "#D1D5DB",
     textMuted: "#6B7280",
 
     // Brand
@@ -73,6 +80,13 @@ export const COLORS = {
     inputBackground: "#1F2937",
     inputBorder: "#374151",
     placeholder: "#6B7280",
+
+    // Header / Footer 🔥
+    headerBackground: "#1F2937",
+    headerText: "#F9FAFB",
+    footerBackground: "#1F2937",
+    footerIcon: "#9CA3AF",
+    footerActive: "#d2c80d",
 
     // Misc
     overlay: "rgba(0,0,0,0.6)",
