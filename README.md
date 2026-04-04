@@ -1,3 +1,100 @@
+# 📸 Instagram Clone (React Native)
+
+A modern **social media mobile application** inspired by Instagram, built using **React Native** with support for **Light & Dark themes**, clean UI architecture, and scalable code structure.
+
+This project focuses on implementing core social media features such as authentication, post feeds, user profiles, and interactions while following real-world development practices.
+
+---
+
+## 🚀 Features
+
+* 🔐 User Authentication (Login / Signup)
+* 🏠 Home Feed with Posts
+* ❤️ Like & Interaction System
+* 👤 User Profile Screen
+* 🌙 Light & Dark Mode (Custom Theme System)
+* 🧭 Navigation (Stack + Bottom Tabs)
+* 🗂 Clean Folder Structure & Reusable Components
+
+---
+
+## 🎨 UI & Theming
+
+* Centralized theme system (`COLORS`)
+* Light & Dark mode support
+* Reusable styling patterns
+* Scalable design system (colors, spacing, typography)
+
+---
+
+## 🛠 Tech Stack
+
+* **Frontend:** React Native
+* **State Management:** Context API
+* **Storage:** AsyncStorage
+* **Navigation:** React Navigation
+
+---
+
+## 🔗 Backend API
+
+This project uses a free backend service for development and testing:
+
+👉 https://freeapi.app
+
+* REST APIs for authentication and data
+* Easy integration for frontend apps
+* Ideal for learning and prototyping
+
+---
+
+## 📁 Project Structure
+
+```
+/src
+  /components
+  /screens
+  /navigation
+  /context
+  /constants
+  /services
+```
+
+---
+
+## 🎯 Goal of the Project
+
+This project is built to:
+
+* Practice real-world React Native development
+* Understand scalable architecture
+* Implement a full social media workflow
+* Learn API integration and state management
+
+---
+
+## ⚡ Future Improvements
+
+* 📸 Image Upload (Cloudinary / Firebase)
+* 💬 Comments System
+* 🔔 Notifications
+* 📡 Real-time updates
+* 📱 Stories Feature
+
+---
+
+## 🤝 Contribution
+
+Feel free to fork this repository and improve it. Suggestions and contributions are welcome!
+
+---
+
+## 📌 Author
+
+Developed by [Aminul Islam]
+
+---
+
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
 # Getting Started
