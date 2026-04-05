@@ -1,4 +1,5 @@
-import { StatusBar, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, StatusBar, StyleSheet, Text, View } from 'react-native';
+import 'react-native-reanimated';
 import {
   SafeAreaProvider,
   useSafeAreaInsets,
@@ -6,6 +7,7 @@ import {
 import { AppContextProvider, useAppContext } from './src/context/AppContext';
 import Main from './src/Main';
 import { COLORS } from './src/constants/Colors';
+import AuthStack from './src/navigation/AuthStack/AuthStack';
 
 function App() {
   return (
@@ -19,8 +21,36 @@ function App() {
 
 function AppContent() {
   const safeAreaInsets = useSafeAreaInsets();
-  const { isDarkMode } = useAppContext(); // ✅ now it's inside provider
+  const { isDarkMode, isAuthenticated ,loading} = useAppContext(); // ✅ now it's inside provider
   const theme = isDarkMode ? COLORS.dark : COLORS.light;
+  console.log('isAuthenticated', isAuthenticated);
+
+   
+
+  // ✅ Loading Screen
+  if (loading) {
+    return (
+      <View
+        style={[
+          styles.loaderContainer,
+          { backgroundColor: theme.background ,flex:1},
+        ]}
+      >
+        <ActivityIndicator size="large" color={theme.primary} />
+
+        <Text style={[styles.loadingText, { color: theme.text }]}>
+          Loading your experience...
+        </Text>
+      </View>
+    );
+  }
+
+  // ✅ Auth Flow
+  if (!isAuthenticated) {
+    return <AuthStack />;
+  }
+
+  // ✅ Main App
 
   return (
     <View
@@ -38,7 +68,20 @@ function AppContent() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingVertical: 5,
+    paddingHorizontal: 7,
   },
+  loaderContainer: {
+  flex: 1,
+  justifyContent: 'center',
+  alignItems: 'center',
+},
+
+loadingText: {
+  marginTop: 15,
+  fontSize: 14,
+  opacity: 0.8,
+},
 });
 
 export default App;
