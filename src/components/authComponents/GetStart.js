@@ -11,7 +11,11 @@ const COLORS = {
   card: '#1E293B',
 };
 
-const GetStart = ({ step, setStep }) => {
+const GetStart = ({ step, setStep ,logInScreen, setLogInScreen}) => {
+  const handleLoginText=()=>{
+    setStep(prev=>prev+1)
+    setLogInScreen(!logInScreen)
+  }
   return (
     <View style={[styles.container, { backgroundColor: COLORS.background }]}>
 
@@ -66,7 +70,13 @@ const GetStart = ({ step, setStep }) => {
 
       {/* Footer Hint */}
       <Text style={[styles.footerText, { color: COLORS.textSecondary }]}>
-        Already have an account? Log in
+        Already have an account? <Text style={{
+          color:"#0a62d6"
+          ,
+          textDecorationStyle:'dotted',
+          fontStyle:'italic',
+          fontWeight:'condensedBold'
+        }} onPress={handleLoginText}>Log In</Text>
       </Text>
 
     </View>
