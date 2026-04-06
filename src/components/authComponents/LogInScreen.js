@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-catch-shadow */
 import {
   Alert,
@@ -25,9 +26,7 @@ const COLORS = {
 };
 
 const LogInScreen = ({ logInScreen, setLogInScreen }) => {
-
-      
-  const {saveLoginData }=useAppContext()
+  const { saveLoginData } = useAppContext();
 
   const {
     control,
@@ -45,15 +44,15 @@ const LogInScreen = ({ logInScreen, setLogInScreen }) => {
     console.log(data);
 
     try {
-      const res=await Auth.login(data)
-       
+      const res = await Auth.login(data);
+
       console.log(res);
       console.log('data', res.data);
       const user = res.data.user;
       const token = res.data.accessToken;
 
-      await saveLoginData(user,token)
-  Alert.alert(res.success ? 'Success' : 'Fail', res.message);
+      await saveLoginData(user, token);
+      Alert.alert(res.success ? 'Success' : 'Fail', res.message);
     } catch (error) {
       console.log(
         'Error on login ',
@@ -75,16 +74,12 @@ const LogInScreen = ({ logInScreen, setLogInScreen }) => {
 
   return (
     <View style={[styles.container, { backgroundColor: COLORS.background }]}>
-      
       {/* Header */}
       <Text style={styles.title}>Welcome Back 👋</Text>
-      <Text style={styles.subtitle}>
-        Login to continue your journey
-      </Text>
+      <Text style={styles.subtitle}>Login to continue your journey</Text>
 
       {/* Card */}
       <View style={[styles.card, { backgroundColor: COLORS.card }]}>
-
         {/* Username */}
         <Controller
           name="username"
@@ -159,10 +154,7 @@ const LogInScreen = ({ logInScreen, setLogInScreen }) => {
       {/* Footer */}
       <Text style={styles.footerText}>
         Don’t have an account?{' '}
-        <Text
-          style={styles.link}
-          onPress={() => setLogInScreen(!logInScreen)}
-        >
+        <Text style={styles.link} onPress={() => setLogInScreen(!logInScreen)}>
           Sign Up
         </Text>
       </Text>
