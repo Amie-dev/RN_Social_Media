@@ -21,10 +21,14 @@ export const AppContextProvider = ({ children }) => {
 
   // Load theme
   useEffect(() => {
-    const loadTheme = async () => {
+    const initializeApp = async () => {
       try {
-        const savedToken = await AsyncStorage.getItem('token');
+        // Theme
+        const themeValue = await AsyncStorage.getItem('isDark');
+        setIsDarkMode(themeValue === 'true');
 
+        // Token
+        const savedToken = await AsyncStorage.getItem('token');
         if (!savedToken) {
           setLoading(false);
           return;
@@ -32,35 +36,33 @@ export const AppContextProvider = ({ children }) => {
 
         const parsedToken = JSON.parse(savedToken);
 
-        // 🔥 VERIFY TOKEN + GET USER
+        // API call
         const res = await Auth.Current_User(parsedToken);
-        console.log('Current User as res', res);
+        console.log('Current User as res:', res);
 
-        const currentUser = res.data; // ✅ depends on your API
-        console.log('Currents user', currentUser);
-        // ✅ set state directly
-
+        const currentUser = res?.data?.data || res?.data?.user || res?.data;
+        console.log('Current User as resData:', res?.data);
+        console.log('Current User as currentUser:', currentUser);
         if (currentUser) {
           setUser(currentUser);
           setToken(parsedToken);
-          // ✅ optionally update storage
           await AsyncStorage.setItem('user', JSON.stringify(currentUser));
+          console.log(
+            'Current User in user:',
+            user,
+          ); /* why give null this line */
         } else {
-          await logout(parsedToken);
-        }
-        const value = await AsyncStorage.getItem('isDark');
-
-        if (value !== null) {
-          setIsDarkMode(value === 'true'); // ✅ convert to boolean
+          await logout();
         }
       } catch (error) {
-        console.log('Error loading theme', error);
+        console.log('Init error:', error);
+        await logout();
       } finally {
         setLoading(false);
       }
     };
 
-    loadTheme();
+    initializeApp();
   }, []);
 
   // Save theme
@@ -123,6 +125,7 @@ export const AppContextProvider = ({ children }) => {
         saveLoginData,
         logout,
         loading,
+        user
       }}
     >
       {children}
