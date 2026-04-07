@@ -11,7 +11,14 @@ const AuthScreen = () => {
   return (
     <>
       {/* 🔥 Step 0 → Get Started */}
-      {step === 0 && <GetStart step={step} setStep={setStep} />}
+      {step === 0 && (
+        <GetStart
+          step={step}
+          setStep={setStep}
+          logInScreen={logInScreen}
+          setLogInScreen={setLogInScreen}
+        />
+      )}
 
       {/* 🔥 Step 1 → Auth Screen */}
       {step > 0 &&
