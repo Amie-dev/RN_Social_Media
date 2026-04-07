@@ -15,10 +15,10 @@ const TabNavigator = () => {
 
   return (
     <Tab.Navigator
-    
       screenOptions={({ route }) => ({
         headerShown: false,
 
+        tabBarHideOnKeyboard: true,
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
 
@@ -38,7 +38,6 @@ const TabNavigator = () => {
         tabBarStyle: {
           backgroundColor: `${theme.footerBackground}`,
           // borderRadius:15,
-        
         },
       })}
     >
@@ -46,7 +45,7 @@ const TabNavigator = () => {
         name="HomeStack"
         component={HomeStack}
         options={{
-          title:"Home",
+          title: 'Home',
           headerShown: false,
         }}
       />
